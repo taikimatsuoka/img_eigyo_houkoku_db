@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Imager案件DB</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <div id="logo"><%= link_to "Imager案件DB", root_path %></div>
+      <% if user_signed_in? %>
+        <ul class="header-right">
+          <li><%= link_to "案件検索", users_path %></li>
+          <li><%= link_to "営業担当一覧", users_path %></li>
+          <li><%= link_to current_user.name+"さん", current_user %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      <% end %>
+    </div>
+  </header>
+  
+  <div class="container">
+    <p class="alert alert-success"><%= notice %></p>
+    <p class="alert alert-danger"><%= alert %></p>
+    <%= yield %>
+  </div>
+
+  <div class="container">
+    <footer class="footer">
+      <div class="small">
+        &copy; Imager. all rights reserved.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
